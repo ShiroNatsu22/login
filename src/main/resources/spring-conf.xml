@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="user1" class="Users">
+        <constructor-arg value="Doraemon"/>
+        <constructor-arg value="dalasito"/>
+        <constructor-arg value="pambisito@gmail.com"/>
+    </bean>
+
+    <bean id="user2" class="Users">
+        <constructor-arg value="Hipito El Godsito"/>
+        <constructor-arg value="hipopotamito"/>
+        <constructor-arg value="hipito@gmail.com"/>
+    </bean>
+
+    <bean id="user3" class="Users">
+        <constructor-arg value="er_Ezio_1459"/>
+        <constructor-arg value="ermehoazazinfueartai"/>
+        <constructor-arg value="ezioAudi@gmail.com"/>
+    </bean>
+
+    <bean id="list" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="user1"/>
+                <ref bean="user2"/>
+                <ref bean="user3"/>
+            </list>
+        </constructor-arg>
+    </bean>
+</beans>
