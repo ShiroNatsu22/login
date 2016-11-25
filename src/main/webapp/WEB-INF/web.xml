@@ -9,7 +9,7 @@
 
     <context-param>
         <param-name>file-upload</param-name>
-        <param-value>C:\xampp\tomcat\webapps\data</param-value>
+        <param-value>/home/jgarcias/Escriptori/Assignatures/Desenvolupament_web_en_entorn_servidor/apache-tomcat-8.5.6/webapps/data/</param-value>
         <description>Location to store uploaded file</description>
     </context-param>
 
@@ -21,9 +21,24 @@
             <param-value>Initialization Paramter</param-value>
         </init-param>
     </filter>
+
+    <filter>
+        <filter-name>RedirectFilter</filter-name>
+        <filter-class>RedirectFilter</filter-class>
+        <init-param>
+            <param-name>test-param2</param-name>
+            <param-value>Initialization Paramter</param-value>
+        </init-param>
+    </filter>
     <filter-mapping>
         <filter-name>LogFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/fileUpload.jsp</url-pattern>
+    </filter-mapping>
+
+
+    <filter-mapping>
+        <filter-name>RedirectFilter</filter-name>
+        <url-pattern>/index.jsp</url-pattern>
     </filter-mapping>
 
 

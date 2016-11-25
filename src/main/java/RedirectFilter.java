@@ -1,18 +1,16 @@
-/**
- * Created by Joshua on 20/11/2016.
- */
-// Import required java libraries
-import java.io.*;
 import javax.servlet.*;
-import javax.servlet.http.*;
-import java.util.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-// Implements Filter class
-public class LogFilter implements Filter  {
+/**
+ * Created by jgarcias on 22/11/16.
+ */
+public class RedirectFilter implements Filter{
     public void  init(FilterConfig config)
-            throws ServletException{
+            throws ServletException {
         // Get init parameter
-        String testParam = config.getInitParameter("test-param");
+        String testParam = config.getInitParameter("test-param2");
 
         //Print the init parameter
         System.out.println("Test Param: " + testParam);
@@ -24,11 +22,9 @@ public class LogFilter implements Filter  {
 
         HttpSession session = ((HttpServletRequest)request).getSession();
 
-        if(session.getAttribute("email")==null){
+        if(session.getAttribute("email")!=null){
             HttpServletResponse httpResponse = (HttpServletResponse) response;
-            httpResponse.sendRedirect("index.jsp");
-
-
+            httpResponse.sendRedirect("fileUpload.jsp");
 
         } else {
 
