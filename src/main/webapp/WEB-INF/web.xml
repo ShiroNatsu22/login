@@ -9,7 +9,7 @@
 
     <context-param>
         <param-name>file-upload</param-name>
-        <param-value>/home/jgarcias/Escriptori/Assignatures/Desenvolupament_web_en_entorn_servidor/apache-tomcat-8.5.6/webapps/data/</param-value>
+        <param-value>C:\xampp\tomcat\webapps\data\</param-value>
         <description>Location to store uploaded file</description>
     </context-param>
 
@@ -61,6 +61,16 @@
         <servlet-name>LogOut</servlet-name>
         <servlet-class>LogOut</servlet-class>
     </servlet>
+
+    <servlet>
+        <servlet-name>VeureArxius</servlet-name>
+        <servlet-class>VeureArxius</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>VeureArxius</servlet-name>
+        <url-pattern>/VeureArxius</url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>LogOut</servlet-name>

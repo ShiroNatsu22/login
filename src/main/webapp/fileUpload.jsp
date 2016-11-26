@@ -21,6 +21,12 @@ Select a file to upload: <br />
     <input type="submit" value="Upload File" />
 </form>
 
+<form action="VeureArxius" method="GET"
+      enctype="multipart/form-data">
+    <br />
+    <input type="submit" value="Veure Fixers" />
+</form>
+
 <form action="LogOut">
     <input type="submit" value="TancaSessio" />
 </form>

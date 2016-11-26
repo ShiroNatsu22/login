@@ -3,6 +3,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
+import java.io.File;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -37,6 +38,12 @@ public class Login extends HttpServlet {
                         cookie.setMaxAge(60 * 60 * 168);
                         response.addCookie(cookie);
                     }
+                }
+                String carpeta = email.split("@")[0];
+                session.setAttribute("carpeta", carpeta);
+                File directorio = new File("C:/xampp/tomcat/webapps/data/" +carpeta + "/");
+                if(!directorio.exists()) {
+                    directorio.mkdir();
                 }
 
                 response.sendRedirect("fileUpload.jsp");

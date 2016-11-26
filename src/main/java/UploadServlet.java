@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -33,6 +34,11 @@ public class UploadServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response)
             throws ServletException, java.io.IOException {
+        HttpSession session = request.getSession();
+        filePath =
+                getServletContext().getInitParameter("file-upload");
+        filePath = filePath + session.getAttribute("carpeta") + "\\";
+
         // Check that we have a file upload request
         isMultipart = ServletFileUpload.isMultipartContent(request);
         response.setContentType("text/html");
@@ -52,7 +58,7 @@ public class UploadServlet extends HttpServlet {
         // maximum size that will be stored in memory
         factory.setSizeThreshold(maxMemSize);
         // Location to save data that is larger than maxMemSize.
-        factory.setRepository(new File("/home/jgarcias/Escriptori/Assignatures/Desenvolupament_web_en_entorn_servidor/apache-tomcat-8.5.6/temp"));
+        factory.setRepository(new File("C:\\xampp\\tomcat\\temp\\"));
 
         // Create a new file upload handler
         ServletFileUpload upload = new ServletFileUpload(factory);
