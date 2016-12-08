@@ -22,7 +22,7 @@ public class UploadServlet extends HttpServlet {
 
     private boolean isMultipart;
     private String filePath;
-    private int maxFileSize = 50 * 1024;
+    private int maxFileSize = 100 * 1024;
     private int maxMemSize = 4 * 1024;
     private File file ;
 
@@ -35,8 +35,7 @@ public class UploadServlet extends HttpServlet {
                        HttpServletResponse response)
             throws ServletException, java.io.IOException {
         HttpSession session = request.getSession();
-        filePath =
-                getServletContext().getInitParameter("file-upload");
+        filePath = getServletContext().getInitParameter("file-upload");
         filePath = filePath + session.getAttribute("carpeta") + "\\";
 
         // Check that we have a file upload request
@@ -98,6 +97,8 @@ public class UploadServlet extends HttpServlet {
                     }
                     fi.write( file ) ;
                     out.println("Uploaded Filename: " + fileName + "<br>");
+                    out.println("<button type='button' onclick='window.location.href=\"fileUpload.jsp\"'>Torna Enrere</button>");
+
                 }
             }
             out.println("</body>");

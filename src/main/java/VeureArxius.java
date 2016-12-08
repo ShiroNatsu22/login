@@ -20,8 +20,28 @@ public class VeureArxius extends HttpServlet{
 
         File[] ficheros = f.listFiles();
         for (int x=0;x<ficheros.length;x++){
-            out.println("<p>Nombre --> " + ficheros[x].getName() + "</p>");
+            out.println("<p>Nombre --> " + ficheros[x].getName() );
+            out.println("<a href='VeureArxius?esborra="+ x +"'/>esborra </a></p>");
+
+
+
         }
+        out.println("<button type='button' onclick='window.location.href=\"fileUpload.jsp\"'>Torna Enrere</button>");
+
+        if (ficheros != null) {
+            for (int i = 0; i < ficheros.length; i++) {
+                if (request.getParameterMap().containsKey("esborra")) {
+                    if (Integer.parseInt(request.getParameter("esborra")) == i) {
+                        ficheros[i].delete();
+                        response.sendRedirect("VeureArxius");
+                        break;
+                    }
+                }
+
+
+            }
+        }
+
 
     }
 }
