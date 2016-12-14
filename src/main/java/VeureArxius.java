@@ -14,7 +14,7 @@ public class VeureArxius extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         java.io.PrintWriter out = response.getWriter( );
         HttpSession session = request.getSession();
-        String path = getServletContext().getInitParameter("file-upload") + session.getAttribute("carpeta") + "\\";
+        String path = getServletContext().getInitParameter("file-upload")  + session.getAttribute("carpeta") + "/";
         File f = new File(path);
         response.setIntHeader("Refresh", 5);
 
@@ -22,8 +22,6 @@ public class VeureArxius extends HttpServlet{
         for (int x=0;x<ficheros.length;x++){
             out.println("<p>Nombre --> " + ficheros[x].getName() );
             out.println("<a href='VeureArxius?esborra="+ x +"'/>esborra </a></p>");
-
-
 
         }
         out.println("<button type='button' onclick='window.location.href=\"fileUpload.jsp\"'>Torna Enrere</button>");

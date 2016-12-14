@@ -41,26 +41,28 @@ public class Login extends HttpServlet {
                 }
                 String carpeta = email.split("@")[0];
                 session.setAttribute("carpeta", carpeta);
-                File directorio = new File("C:/xampp/tomcat/webapps/data/" +carpeta + "/");
-                if(!directorio.exists()) {
-                    directorio.mkdir();
+
+                File directory = new File(getServletContext().getInitParameter("file-upload") + carpeta + "/");
+                File carpetaUser = new File(getServletContext().getInitParameter("file-upload"));
+
+                if(!carpetaUser.exists()) {
+                    carpetaUser.mkdir();
                 }
 
+                if(!directory.exists()) {
+                    directory.mkdir();
+                }
 
-                File directory = new File(getServletContext().getInitParameter("file-upload") + carpeta);
-                directory.mkdir();
-                String strPath = getServletContext().getInitParameter("file-upload") + carpeta;
-                File strFile = new File(strPath + "\\RegistreUsuari.log");
+                File strFile = new File(directory.getPath() + "/RegistreUsuari.log");
 
                 String logContent = "<p>Dia: " + new Date() + " User: " + u.getName() + " IP: " + request.getRemoteAddr() +"</p>" ;
-                BufferedWriter outStream = new BufferedWriter(new FileWriter(strFile, true));
+                BufferedWriter outStream = new BufferedWriter(new FileWriter(strFile.getPath(), true));
                 outStream.newLine();
                 outStream.write(logContent);
                 outStream.close();
-                strPath = getServletContext().getInitParameter("file-upload");
-                strFile = new File(strPath + "Registre.log");
+                strFile = new File(getServletContext().getInitParameter("file-upload") + "/Registre.log");
                 logContent = "<p>Dia: " + new Date() + " Usuari: " + u.getName() + " IP: " + request.getRemoteAddr() + "</p>";
-                outStream = new BufferedWriter(new FileWriter(strFile, true));
+                outStream = new BufferedWriter(new FileWriter(strFile.getPath(), true));
                 outStream.newLine();
                 outStream.write(logContent);
                 outStream.close();

@@ -22,7 +22,7 @@ public class UploadServlet extends HttpServlet {
 
     private boolean isMultipart;
     private String filePath;
-    private int maxFileSize = 100 * 1024;
+    private int maxFileSize = 100000000 * 1024;
     private int maxMemSize = 4 * 1024;
     private File file ;
 
@@ -36,7 +36,7 @@ public class UploadServlet extends HttpServlet {
             throws ServletException, java.io.IOException {
         HttpSession session = request.getSession();
         filePath = getServletContext().getInitParameter("file-upload");
-        filePath = filePath + session.getAttribute("carpeta") + "\\";
+        filePath = filePath + session.getAttribute("carpeta") + "/";
 
         // Check that we have a file upload request
         isMultipart = ServletFileUpload.isMultipartContent(request);
@@ -57,7 +57,7 @@ public class UploadServlet extends HttpServlet {
         // maximum size that will be stored in memory
         factory.setSizeThreshold(maxMemSize);
         // Location to save data that is larger than maxMemSize.
-        factory.setRepository(new File("C:\\xampp\\tomcat\\temp\\"));
+        factory.setRepository(new File("../temp"));
 
         // Create a new file upload handler
         ServletFileUpload upload = new ServletFileUpload(factory);
@@ -88,12 +88,12 @@ public class UploadServlet extends HttpServlet {
                     boolean isInMemory = fi.isInMemory();
                     long sizeInBytes = fi.getSize();
                     // Write the file
-                    if( fileName.lastIndexOf("\\") >= 0 ){
+                    if( fileName.lastIndexOf("/") >= 0 ){
                         file = new File( filePath +
-                                fileName.substring( fileName.lastIndexOf("\\"))) ;
+                                fileName.substring( fileName.lastIndexOf("/"))) ;
                     }else{
                         file = new File( filePath +
-                                fileName.substring(fileName.lastIndexOf("\\")+1)) ;
+                                fileName.substring(fileName.lastIndexOf("/")+1)) ;
                     }
                     fi.write( file ) ;
                     out.println("Uploaded Filename: " + fileName + "<br>");
