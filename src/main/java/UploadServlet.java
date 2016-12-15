@@ -1,5 +1,7 @@
 /**
  * Created by Joshua on 12/11/2016.
+ * @author Pablo i Joshua
+ * @version 1.0.0
  */
 // Import required java libraries
 import java.io.*;
@@ -18,19 +20,36 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.output.*;
 
+/**
+ * Classe que s'encarregara de dur a terme el tema de pujar fixers a les distintes carpetes
+ */
 public class UploadServlet extends HttpServlet {
 
     private boolean isMultipart;
     private String filePath;
-    private int maxFileSize = 100000000 * 1024;
+    private int maxFileSize = 1000 * 1024;
     private int maxMemSize = 4 * 1024;
     private File file ;
 
+    /**
+     * Merode que stablira la ruta a on se pujaran els arxius
+     */
     public void init( ){
         // Get the file location where it would be stored.
         filePath =
                 getServletContext().getInitParameter("file-upload");
     }
+
+    /**
+     *
+     * Aquest metode s'encarrega de comprobar i pujar arxius, si es supera el maxMemSize, anira a una carpeta temporal, sempre
+     * i quan no es superi el maxFileSize
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws java.io.IOException
+     */
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response)
             throws ServletException, java.io.IOException {
@@ -107,11 +126,5 @@ public class UploadServlet extends HttpServlet {
             System.out.println(ex);
         }
     }
-    public void doGet(HttpServletRequest request,
-                      HttpServletResponse response)
-            throws ServletException, java.io.IOException {
 
-        throw new ServletException("GET method used with " +
-                getClass( ).getName( )+": POST method required.");
-    }
 }

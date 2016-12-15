@@ -8,8 +8,20 @@ import java.io.IOException;
 /**
  * Created by Joshua on 20/11/2016.
  */
-public class LogOut extends HttpServlet {
 
+/**
+ *Aquesta classe es l'encarregada de que l'usuari pugui tancar la seva sessio.
+ */
+public class LogOut extends HttpServlet {
+    /**
+     *
+     * Aquest metode s'encarrega de invalidar la sessio actual.
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

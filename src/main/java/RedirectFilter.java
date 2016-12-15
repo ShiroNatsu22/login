@@ -7,6 +7,13 @@ import javax.servlet.http.HttpSession;
  * Created by jgarcias on 22/11/16.
  */
 public class RedirectFilter implements Filter{
+
+    /**
+     * Aquest filter s'encarregara de comprobar que si l'usuari esta logat, no li permeti tornar a l'index.jsp, en el
+     * defecte a la pantalla de login
+     * @param config
+     * @throws ServletException
+     */
     public void  init(FilterConfig config)
             throws ServletException {
         // Get init parameter

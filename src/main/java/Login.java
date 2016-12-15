@@ -10,9 +10,27 @@ import java.util.List;
 
 /**
  * Created by Joshua on 20/11/2016.
+ * @author Pablo i Joshua
+ */
+
+
+/**
+ * Aquesta classe es l'encarregada de dur el tema del login, cookies i logs
  */
 public class Login extends HttpServlet {
 
+    /**
+     *
+     * Aquest metode,s'encarregara de, crear cookies,carpeta de usuari si no existeix, el registre de usuaris
+     * ,logarte mitjançant una sessio i donar un missatge d'error si l'usuari no ha introduit la contrasenya o el email
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     *
+     *
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-conf.xml");
