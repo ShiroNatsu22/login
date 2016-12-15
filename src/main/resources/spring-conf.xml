@@ -7,19 +7,19 @@
 
     <bean id="user1" class="Users">
         <constructor-arg value="Doraemon"/>
-        <constructor-arg value=""/>
+        <constructor-arg value="1234"/>
         <constructor-arg value="pambisito@gmail.com"/>
     </bean>
 
     <bean id="user2" class="Users">
         <constructor-arg value="Hipito El Godsito"/>
-        <constructor-arg value=""/>
+        <constructor-arg value="4321"/>
         <constructor-arg value="hipito@gmail.com"/>
     </bean>
 
     <bean id="user3" class="Users">
         <constructor-arg value="er_Ezio_1459"/>
-        <constructor-arg value=""/>
+        <constructor-arg value="1357"/>
         <constructor-arg value="ezioAudi@gmail.com"/>
     </bean>
 
