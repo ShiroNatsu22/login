@@ -50,10 +50,6 @@
         <servlet-class>UploadServlet</servlet-class>
     </servlet>
 
-    <servlet>
-        <servlet-name>Cookies</servlet-name>
-        <servlet-class>Cookies</servlet-class>
-    </servlet>
 
     <servlet>
         <servlet-name>Login</servlet-name>
@@ -83,10 +79,6 @@
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Cookies</servlet-name>
-        <url-pattern>/Cookies</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
